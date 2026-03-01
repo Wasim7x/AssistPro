@@ -17,6 +17,7 @@ from utils.model_loader import ModelLoader
 from prompt_library.prompt import PROMPT_TEMPLATES
 import os
 from fastapi.staticfiles import StaticFiles
+from uvicorn import run as app_run
 
 app = FastAPI()
 
@@ -24,7 +25,7 @@ app = FastAPI()
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 app.mount("/static", StaticFiles(directory=os.path.join(BASE_DIR, "static")), name="static")
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="template")
 # Allow CORS (optional for frontend)
 app.add_middleware(
     CORSMiddleware,
@@ -70,3 +71,7 @@ async def chat(msg:str=Form(...)):
     result=invoke_chain(msg)
     print(f"Response: {result}")
     return result
+
+
+if __name__ == "__main__":
+    app_run(app, host="0.0.0.0", port=5000)
