@@ -1,5 +1,11 @@
-env
+.env
 venvgit
 python=3.10/
 cusotmor_bot/
 __pycache__/
+DATA/
+logs/
+venv/
+assistPro.egg-info/
+test/
+.env

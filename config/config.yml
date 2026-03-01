@@ -1,1 +1,13 @@
-data_path : "DATA/flipkart_product_review.csv"
+astra_db:
+  collection_name: "asistPro"
+
+embedding_model:
+  provider: "google"
+  model_name: "models/gemini-embedding-001"
+
+retriever:
+  top_k: 10
+
+llm:
+  provider: "google"
+  model_name: "deepseek-r1-distill-llama-70b" 
